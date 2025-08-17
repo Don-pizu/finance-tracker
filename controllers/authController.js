@@ -70,3 +70,15 @@ exports.login = async (req, res) => {
 		return res.status(401).json({ message: 'Invalid Credentials'});
 	}
 };
+
+
+//GET  Get balance
+exports.getBalance = async (req, res) => {
+  try {
+    res.json({ balance: req.user.balance });
+  } catch (error) {
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+

@@ -4,9 +4,12 @@
 A simple app for tracking **income, expenses, and balance** with user authentication.
 
 ## Features
-- 🔐 User Authentication (JWT-based)
-- ✏️ CRUD Operations (Create, Read, Update, Delete)
-- 🗄️ MongoDB Integration for persistent storage
+-  User Authentication (JWT-based)
+-  CRUD Operations for Transactions (Create, Read, Update, Delete)
+- Balance auto-updates with credit/debit
+-  Pagination & Filtering for transactions
+-  MongoDB Integration for persistent storage
+-  Basic security (Helmet, XSS-clean, Mongo-sanitize, Rate limiting)
 
 ## Installation & Usage
 
@@ -26,10 +29,13 @@ node server.js
 project-root/
 ├── controllers/
 │   └── authController.js
+|   |__ transactionController.js
 ├── models/
 │   └── User.js
+|   |__ transaction.js
 ├── routes/ 
 │   └── authRoutes.js
+|   |__ transactionRoutes.js
 ├── middleware/
 │   └── authMiddleware.js
 ├── config/
@@ -51,13 +57,27 @@ project-root/
 -JWT Authentication
 -Bcrypt.js (password hashing)
 -dotenv (environment variables)
+-Helmet, Express-rate-limit, Mongo-sanitize, XSS-clean
 
 
 API Endpoints
 
+Auth Routes
 Method	Endpoint	 Description	Access
 POST	/register	 Register a new user	Public
 POST	/login	     Login an existing user	Public
+
+
+Transaction Routes
+
+(All require JWT authentication)
+
+Method   	Endpoint	    	Description												Access
+POST	  /api/transactions		Create a new transaction 								Private
+GET		  /api/transactions		Get all transactions (with pagination + filtering)		Private
+GET		  /api/transactions/:id	Get single transaction by ID							Private
+PUT	   	 /api/transactions/:id	Update transaction (amount/type/description)			Private
+DELETE	 /api/transactions/:id	Delete a transaction	
 
 
 ## Author name
@@ -74,3 +94,5 @@ git remote add origin https://github.com/Don-pizu/finance-tracker.git
 git push -u origin main
 
 git commit -m "feat: add registration and login routes"
+
+git commit -m "feat: add transaction CRUD and balance update"
