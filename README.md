@@ -43,8 +43,13 @@ project-root/
 ├── utility/
 │   └── generateToken.js
 ├── tests/
+    |-- auth.test.js
+    |-- transaction.test.js
+    |-- setup.js
 ├── app.js
 ├── server.js
+|__ swagger
+|-- jest.comfig.js
 ├── .env
 ├── .gitignore
 └── README.md
@@ -58,6 +63,8 @@ project-root/
 -Bcrypt.js (password hashing)
 -dotenv (environment variables)
 -Helmet, Express-rate-limit, Mongo-sanitize, XSS-clean
+-Jest
+-Swagger
 
 
 API Endpoints
@@ -96,3 +103,5 @@ git push -u origin main
 git commit -m "feat: add registration and login routes"
 
 git commit -m "feat: add transaction CRUD and balance update"
+
+git commit -m "feat: add swagger and jest for testing, updated README"

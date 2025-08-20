@@ -146,9 +146,10 @@ exports.updateTransaction = async (req, res, next) => {
 
 
 		//update transaction values
-		 const newAmount = amount ?? transaction.amount;
-    	 const newType = type ?? transaction.type;
-   		 const newDescription = description ?? transaction.description;
+		 const newAmount = amount !== undefined ? Number(amount) : transaction.amount;
+		 const newType = type ?? transaction.type;
+		 const newDescription = description ?? transaction.description;
+
 
 		// Check balance validity before applying new transaction
 		if (newType === 'debit' && newAmount > user.balance) {

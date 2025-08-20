@@ -35,6 +35,7 @@ exports.register = async (req, res) => {
 		res.status(201).json({
 			_id: user._id,
 			name: user.name,
+			email: user.email,
 			accountType: user.accountType,
 			balance: user.balance,
 			token: generateToken(user)
