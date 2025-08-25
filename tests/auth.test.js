@@ -33,11 +33,10 @@ describe('Auth Routes', () => {
   it('should login a user', async () => {
     const res = await request(app)
       .post('/api/auth/login')
-      .send({ name: 'testuser', email: 'test@example.com', password: '123456' });
+      .send({ email: 'test@example.com', password: '123456' });
 
     expect(res.statusCode).toBe(200);
     expect(res.body).toHaveProperty('token');
-    expect(res.body.name).toBe('testuser');
     expect(res.body.email).toBe('test@example.com');
   });
 

@@ -50,13 +50,13 @@ exports.register = async (req, res) => {
 
 //POST  login user
 exports.login = async (req, res) => {
-	const { name, email, password } = req.body
+	const { email, password } = req.body
 
-	if(!name || !email || !password)
-		return res.status(400).json({message: 'Name, Email and Password are reuired'});
+	if( !email || !password)
+		return res.status(400).json({message: 'Email and Password are reuired'});
 
-	// Find user by name
-	const user = await User.findOne({ name: name});
+	// Find user by email
+	const user = await User.findOne({ email: email});
 
 	if (user && (await user.matchPassword(password))) {
 		res.json({

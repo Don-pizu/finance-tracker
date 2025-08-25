@@ -53,13 +53,10 @@ const { register, login, getBalance } = require('../controllers/authController')
  *           schema:
  *             type: object
  *             required:
- *               - name
  *               - email
  *               - accountType
  *               - password
  *             properties:
- *               username:
- *                 type: string
  *               email:
  *                 type: string
  *               accountType:

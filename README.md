@@ -105,3 +105,5 @@ git commit -m "feat: add registration and login routes"
 git commit -m "feat: add transaction CRUD and balance update"
 
 git commit -m "feat: add swagger and jest for testing, updated README"
+
+git commit -m "feat: add transaction CRUD and balance update"
