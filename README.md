@@ -70,9 +70,10 @@ project-root/
 API Endpoints
 
 Auth Routes
-Method	Endpoint	 Description	Access
-POST	/register	 Register a new user	Public
-POST	/login	     Login an existing user	Public
+Method	   Endpoint	             Description	       Access
+POST	api/auth/register	 Register a new user	    Public
+POST	api/auth/login	     Login an existing user	    Public
+GET     api/auth/balance     Get user balance           Private
 
 
 Transaction Routes
@@ -84,7 +85,7 @@ POST	  /api/transactions		Create a new transaction 								Private
 GET		  /api/transactions		Get all transactions (with pagination + filtering)		Private
 GET		  /api/transactions/:id	Get single transaction by ID							Private
 PUT	   	 /api/transactions/:id	Update transaction (amount/type/description)			Private
-DELETE	 /api/transactions/:id	Delete a transaction	
+DELETE	 /api/transactions/:id	Delete a transaction	                                Private
 
 
 ## Author name
