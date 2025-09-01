@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Register</title>
+  <link rel="stylesheet" href="CSS/signup.css" />
+</head>
+<body>
+  <h2>Register</h2>
+  <form id="signupForm">
+    <input type="text" id="name" placeholder="Name" required /><br />
+    <input type="email" id="email" placeholder="Email" required /><br />
+    <select id="accountType" required>
+      <option value="">Select Account Type</option>
+      <option value="savings">Savings</option>
+      <option value="current">Current</option>
+    </select><br />
+    <input type="password" id="password" placeholder="Password" required /><br />
+    <button type="submit">Register</button>
+  </form>
+  <p>Already have an account? <a href="index.html">Login here</a></p>
+
+  <script src="js/signup.js"></script>
+</body>
+</html>

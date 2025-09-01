@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Transactions</title>
+  <link rel="stylesheet" href="CSS/transaction.css" />
+</head>
+<body>
+  <h2>Dashboard</h2>
+
+  <button id="logoutBtn">Logout</button>
+  
+  <p id="balance">Balance: Loading...</p>
+
+  <h3>Add Transaction</h3>
+  <form id="transactionForm">
+    <input type="number" id="amount" placeholder="Amount" required /><br />
+    <select id="type" required>
+      <option value="credit">Credit</option>
+      <option value="debit">Debit</option>
+    </select><br />
+    <input type="text" id="description" placeholder="Description" /><br />
+    <button type="submit">Add Transaction</button>
+  </form>
+
+  <h3>Update Transaction</h3>
+  <form id="updateForm" style="display:none;">
+    <input type="hidden" id="updateId" />
+    <input type="number" id="updateAmount" placeholder="Amount" required /><br />
+    <select id="updateType" required>
+      <option value="credit">Credit</option>
+      <option value="debit">Debit</option>
+    </select><br />
+    <input type="text" id="updateDescription" placeholder="Description" /><br />
+    <button type="submit">Update Transaction</button>
+    <button type="button" id="cancelUpdateBtn">Cancel</button>
+  </form>
+
+  <h3>Transactions</h3>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>ID</th><th>Type</th><th>Amount</th><th>Description</th><th>Balance After</th><th>Date</th><th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="transactionsTable"></tbody>
+  </table>
+
+  <script src="JS/transaction.js"></script>
+</body>
+</html>

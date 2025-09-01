@@ -4,9 +4,11 @@ require('dotenv').config();
 
 const express = require('express');
 const app = express();
+const path = require('path');
 const connectDB = require('./config/db');
 
 // NEW: security libs
+const cors = require("cors");
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const sanitize = require('mongo-sanitize');
@@ -68,6 +70,30 @@ max: 100, // max 100 requests per IP
 message: 'Too many requests from this IP, please try again later.' 
 }); 
 app.use('/api', limiter);
+
+
+// CORS configuration
+const allowedOrigins = [
+  'http://localhost:5000',   
+  'https://finance-tracker-rcx7.onrender.com',// deployed backend
+  ]; 
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
+//to work from vercel frontend i will have to comment this static out
+app.use(express.static(path.join(__dirname, "frontend"))); // serve frontend
+
 
 
 // Middleware to parse JSON
